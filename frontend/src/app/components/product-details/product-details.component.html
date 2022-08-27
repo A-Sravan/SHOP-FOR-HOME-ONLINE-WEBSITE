@@ -1,0 +1,20 @@
+<div class="detail-section">
+    <div class="container-fluid">
+
+        <img src="{{ product.imageUrl }}" class="detail-img">
+        <br>
+        <br>
+        <h3 style="color: white;">{{ product.name }}</h3>
+        <p class="price" style="color:#999900 ;">{{ product.unitPrice | currency:'INR' }}</p>
+        <a href="#" class="primary-btn">Add to cart</a>
+        &nbsp;
+        <a href="#" class="primary-btn bg-success">Add to wishlist</a>
+        <hr>
+        <div style="color: white;">
+        <h4 style="color: white;">Description</h4>
+        <br>
+        <p>{{ product.description }}</p>
+            </div>
+        <a style="color: #999900;" routerLink="/products" class="mt-5">Back to Product List</a>
+    </div>
+</div>

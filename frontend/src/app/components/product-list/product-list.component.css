@@ -1,0 +1,49 @@
+.price{
+    text-indent: 85px;
+    padding-left: 15px;
+}
+.size{
+    height: 150px;
+    width: 90px;
+}
+.btn-primary{
+    /* color: #125734; */
+
+        background-color:#197D4B; /* Green */
+        border: none;
+        color: white;
+        padding: 6px 15px;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+}
+
+.btn-danger{
+    
+    background-color:#710000; /* Green */
+    border: none;
+    color: white;
+    padding: 6px 15px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.price{
+    color: #2421c5;
+}
+
+ngb-pagination{
+    color: #197D4B;
+    background-color: #197D4B;
+}
+
+.max{
+    background-color: rgba(78, 76, 76, 0.9);
+   
+    border-width: 0px;
+}

@@ -1,0 +1,149 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    
+</head>
+
+
+
+<body>
+<div class="page-wrapper">
+
+  <!-- MENU SIDEBAR-->
+  <aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo" style="background-color: #21A362;">
+     
+      <a href="#">
+        <img src="assets/images/logo.png" alt="flipkart" class="img-responsive">
+
+      </a>
+      <br>
+      <br>
+      <br>
+
+    </div>
+    <app-product-category-menu></app-product-category-menu>
+  </aside>
+
+  </div>
+  <!-- END MENU SIDEBAR-->
+
+
+
+
+
+
+  <div class="page-container">
+    <!-- HEADER DESKTOP-->
+    <header class="header-desktop" style="background-color:#21A362">
+      <div class="section-content section-content-p30">
+        <div class="container-fluid">
+          <div class="header-wrap">
+            <app-search></app-search>
+            <!-- <form class="form-header" onsubmit="return false;" method="GET">
+              <input class="au-input au-input-xl" type="text" name="search" placeholder="Search for data ..." />
+              <button class="au-btn-submit" type="submit">
+                Search
+              </button>
+            </form> -->
+            <div>
+              <a class="button-33" routerLink="/wishlist" >Wishlist</a>
+              &nbsp;
+              <a class="button-33" routerLink="/register" >Register</a>
+              &nbsp;
+              <a class="button-33" style="padding-left: 30px; padding-right: 30px;" routerLink="/login" >Login</a>
+              &nbsp;
+              <a onclick="alert('Logged out')" class="button-33" style="padding-left: 30px; padding-right: 30px;" routerLink="/sort" >Logout</a>
+            </div>
+            <app-cart-status></app-cart-status>
+
+          </div>
+          <div class="account-wrap"></div>
+        </div>
+      </div>
+    </header>
+    <!-- END HEADER DESKTOP-->
+    
+     <!-- corousel start -->
+    
+
+    <!-- MAIN CONTENT-->
+    <router-outlet></router-outlet>
+    <!-- <app-product-list></app-product-list> -->
+
+  </div>
+
+
+<!-- ENDS PAGE CONTAINER -->
+
+
+
+
+
+<!--  Footer begins here -->
+<footer class="footer-distributed">
+
+			<div class="footer-left">
+
+				<h3>Great<span> Learning</span></h3>
+
+				<p class="footer-links">
+          <a href="#">Mentor : Neeraj Kumar</a>
+          <br>
+					<a href="#">Team : Sravan</a>
+					,
+					<a href="#"> Chandhana</a>
+					,
+					<a href="#"> Kavya</a>
+					,
+					<a href="#"> Kajal</a>
+					,
+					<a href="#"> Hrishikesh</a>
+
+				</p>
+
+				<p class="footer-company-name"> © Great Learning Batch-2</p>
+
+				<div class="footer-icons">
+
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-linkedin"></i></a>
+					<a href="#"><i class="fa fa-github"></i></a>
+				</div>
+
+			</div>
+
+			<div class="footer-right">
+
+				<p>Contact Us</p>
+
+				<form action="#" method="post">
+
+					<input type="text" name="email" placeholder="Email">
+					<textarea name="message" placeholder="Message"></textarea>
+					<button onclick="alert('We recieved your request, Thank You!')">Send</button>
+
+				</form>
+
+			</div>
+
+		</footer>
+
+
+
+
+  </body>
+  </html>
+<!-- Footer ended -->

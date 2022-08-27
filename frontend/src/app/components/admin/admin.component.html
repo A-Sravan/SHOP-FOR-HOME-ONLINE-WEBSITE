@@ -1,0 +1,253 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+
+      <div class="row">
+        <h1 style="text-align: center;">Admin Dashboard</h1>
+        <div class="card">
+          <div class="card-header">
+            CRUD ON USER
+          </div>
+          <ol class="list-group">
+            <li class="list-group-item">1. Show All user</li>
+            <li class="list-group-item">2. Create A user</li>
+            <li class="list-group-item">3. Read A user</li>
+            <li class="list-group-item">4. Delete A user</li>
+            <li class="list-group-item">5. Update A user</li>
+          </ol>
+          <div class="card-body">
+            Enter a choice : <input type='text' [(ngModel)]="num" class="form-control" />
+
+            <div [ngSwitch]="num">
+              <div *ngSwitchCase="'1'">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Username</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">email</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let user of users">
+                      <td>{{user.id}}</td>
+                      <td>{{user.username}}</td>
+                      <td>{{user.firstName}}</td>
+                      <td>{{user.email}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div *ngSwitchCase="'2'">
+                <form [formGroup]="form" class="form-group" (ngSubmit)="onSubmit()">
+                  <p>
+                    <label>First Name:</label>
+                    <input type="text" formControlName="firstName" class="form-control">
+                  </p>
+                  <p>
+                    <label>username</label>
+                    <input type="text" formControlName="username" class="form-control">
+                  </p>
+
+                  <p>
+                    <label>email</label>
+                    <input type="email" formControlName="email" class="form-control">
+                  </p>
+
+                  <p>
+                    <label>Password:</label>
+                    <input type="password" formControlName="password" class="form-control">
+                  </p>
+
+                  <p>
+                    <button type="button" class="btn btn-success" type="submit" [disabled]="!form.valid">Submit</button>
+                  </p>
+                </form>
+              </div>
+              <div *ngSwitchCase="'3'">
+                <form #userName="ngForm" (ngSubmit)="onClickget(userName.value)">
+                  <input class="form-control" type="text" name="username" placeholder="enter the username" ngModel>
+
+                  <input type="button" class="btn btn-success" type="submit" value="submit">
+                </form>
+
+                <div>username:- {{singleUserGet.username}}</div>
+                <div>password:- {{singleUserGet.password}}</div>
+                <div>email:- {{singleUserGet.email}}</div>
+                <div>name:- {{singleUserGet.firstName}}</div>
+              </div>
+              <div *ngSwitchCase="'4'">
+                <form #userName="ngForm" (ngSubmit)="onClickget(userName.value)">
+                  <input class="form-control" type="text" name="username" placeholder="enter id to delete user" ngModel>
+
+                  <input type="button" class="btn btn-success" type="submit" value="submit">
+                </form>
+              </div>
+              <div *ngSwitchCase="'5'">
+                <form #userName="ngForm" (ngSubmit)="onClickget(userName.value)">
+                  <input class="form-control" type="text" name="username" placeholder="enter id to update" ngModel>
+
+                  <input type="button" class="btn btn-success" type="submit" value="submit">
+                </form>
+              </div>
+              <div *ngSwitchDefault>
+                not choosen
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <br>
+      <br>
+      <div>
+        <h1 style="text-align: center;">Bulk Upload</h1>
+            <br>
+             <br>
+             <br>
+            <input type="file" #csvReader name="Upload CSV" id="txtFileUpload" (change)="uploadListener($event)" accept=".csv" /> 
+            <br>    <br> <br>
+            <table class="minimalistBlack" *ngIf="records.length > 0">   
+              <thead> 
+                <tr>    
+                  <th>ID </th>    
+                  <th>Product Name </th>    
+                  <th>Product Description</th>    
+                  <th>Stock Avaialable  </th>    
+                  <th>Price </th>    
+                  <!-- <th>Mobile </th>     -->
+                </tr>    
+              </thead>    
+              <tbody>    
+                <tr *ngFor="let record of records;let i = index;">    
+                  <td> <span>{{record.id}}</span> </td>    
+                  <td> <span>{{record.firstName}}</span> </td>    
+                  <td> <span>{{record.lastName}}</span> </td>    
+                  <td> <span>{{record.age}}</span> </td>    
+                  <td> <span>{{record.position}}</span> </td>    
+                  <!-- <td> <span>{{record.mobile}}</span> </td>     -->
+                </tr>    
+              </tbody>    
+            </table>     
+
+
+            <!-- jerjifner -->
+<!--           
+       <angular-file-uploader [config]="afuConfig">
+        </angular-file-uploader> -->
+
+
+            <br>
+      </div>
+      <div style="text-align: center;">ADD DISCOUNT COUPONS</div>
+      <form #coupon="ngForm" (ngSubmit)="onAddCoupons(coupon.value)">
+        <input class="form-control" type="text" name="username" placeholder="enter the coupons to add" ngModel>
+        <br>
+        <input type="button" class="btn btn-success" type="submit" value="submit">
+      </form>
+      <br>
+      <div style="text-align: center;">CRUD ON PRODUCTS</div>
+      <div>
+        <ol class="list-group">
+          <li class="list-group-item">1. Show All Products</li>
+          <li class="list-group-item">2. Create A Prouct</li>
+          <li class="list-group-item">3. Read A Product</li>
+          <li class="list-group-item">4. Delete A Product</li>
+          <li class="list-group-item">5. get all stocks</li>
+          <li class="list-group-item">6. get sales report</li>
+        </ol>
+      </div>
+      Enter a choice : <input type='text' [(ngModel)]="num1" class="form-control" />
+      <div [ngSwitch]="num1">
+        <div *ngSwitchCase="'1'">
+          <div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">sku</th>
+                  <th scope="col">unit price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of allProduct">
+
+                  <td>{{product.name}}</td>
+                  <td>{{product.sku}}</td>
+                  <td>{{product.unitPrice}}</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+        <div *ngSwitchCase="'2'">
+          <input class="input-group-text" type='text' placeholder="product Name">
+          <input class="input-group-text" type='text' placeholder="product category">
+          <input class="input-group-text" type='text' placeholder="stocks in unit">
+          <button class="btn btn-success">submit</button>
+        </div>
+        <div *ngSwitchCase="'3'">
+          <input class="input-group-text" type='text' placeholder="Enter Product ID">
+          <button class="btn btn-success">submit</button>
+        </div>
+        <div *ngSwitchCase="'4'">
+          <input class="input-group-text" type='text' placeholder="Enter Product ID">
+          <button class="btn btn-success">submit</button>
+        </div>
+        <div *ngSwitchCase="'5'">
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">sku</th>
+                <th scope="col">unit price</th>
+                <th scope="col">units in stock</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of allProduct">
+
+                <td>{{product.name}}</td>
+                <td>{{product.sku}}</td>
+                <td>{{product.unitPrice}}</td>
+                <td>{{product.unitsInStock}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngSwitchCase="'6'">
+          <div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">sku</th>
+                  <th scope="col">unit price</th>
+                  <th scope="col">units in stock</th>
+                  <th scope="col">Date Created </th>
+                  <!-- <th scope="col">Last Update</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of allProduct">
+
+                  <td>{{product.name}}</td>
+                  <td>{{product.sku}}</td>
+                  <td>{{product.unitPrice}}</td>
+                  <td>{{product.unitsInStock}}</td>
+                  <td>{{product.dateCreated}}</td>
+                  <td>{{product.lastUpdate}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngSwitchDefault>Choose among them</div>
+
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
